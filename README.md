@@ -9,4 +9,20 @@
 
 ## Modelos
 
-Uno de los modelos consta de una IA capaz de predicir el valor de una casa tomando como parametros ciertos atributos de la misma (Cantidad de ambientes, localizacion, antiguedad, etc)
+Este modelo de IA es del tipo de `Image Classification`, con el cual podemos predicir con una imagen el tipo de vegetal que es. La lista de los vegetales que es capaz de predicir es la siguiente:
+
+- Bean
+- Bitter_Gourd
+- Bottle_Gourd
+- Brinjal
+- Broccoli
+- Cabbage
+- Capsicum
+- Carrot
+- Cauliflower
+- Cucumber
+- Papaya
+- Potato
+- Pumpkin
+- Radish
+- Tomato
