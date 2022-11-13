@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy as np
 from PIL import Image
+import os
 import tensorflow as tf
 from keras.preprocessing.image import ImageDataGenerator
 from numpy import expand_dims
@@ -39,11 +40,12 @@ model.add(Dense(10, activation = 'softmax'))
 
 model.compile(loss='sparse_categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
-model_path = st.file_uploader("Choose a h5 file", type="hdf5")
-
-path_best_model = 'best_model.hdf5'
-
-loaded_model = model.load_weights(model_path)
+import urllib.request
+@st.experimental_singleton
+def load_model():
+    if not os.path.isfile('model.hdf5'):
+        urllib.request.urlretrieve('https://github.com/LucaFedericoMarty/TP-T.E-IA/blob/main/best_model.hdf5', 'model.hdf5')
+    return model.load_weights('model.hdf5')
 
 image_file = st.file_uploader("Upload images for vegetable classification", type=['png','jpeg'])
 
