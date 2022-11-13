@@ -39,9 +39,11 @@ model.add(Dense(10, activation = 'softmax'))
 
 model.compile(loss='sparse_categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
+model_path = st.file_uploader("Choose a h5 file", type="hdf5")
+
 path_best_model = 'best_model.hdf5'
 
-loaded_model = model.load_weights(path_best_model)
+loaded_model = model.load_weights(model_path)
 
 image_file = st.file_uploader("Upload images for vegetable classification", type=['png','jpeg'])
 
