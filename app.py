@@ -39,9 +39,9 @@ model.add(Dense(10, activation = 'softmax'))
 
 model.compile(loss='sparse_categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
-path_best_model = 'saved_model.pb'
+path_best_model = 'best_model.hdf5'
 
-loaded_model =tf.keras.models.load_model(path_best_model)
+loaded_model = model.load_weights(path_best_model)
 
 image_file = st.file_uploader("Upload images for vegetable classification", type=['png','jpeg'])
 
