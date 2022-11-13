@@ -47,7 +47,7 @@ def load_model():
         urllib.request.urlretrieve('https://github.com/LucaFedericoMarty/TP-T.E-IA/blob/main/best_model.hdf5', 'model.hdf5')
     return model.load_weights('model.hdf5')
 
-model = load_model()
+loaded_model = load_model()
 
 image_file = st.file_uploader("Upload images for vegetable classification", type=['png','jpeg'])
 
@@ -67,7 +67,7 @@ def predict(image):
 
     test_img = datagen.flow(img)
 
-    predictions = model.predict(test_img)
+    predictions = loaded_model.predict(test_img)
 
     number_class_pred = np.argmax(predictions)
 
