@@ -1,5 +1,7 @@
 import streamlit as st
+import numpy as np
 from PIL import Image
+import tensorflow as tf
 from keras.preprocessing.image import ImageDataGenerator
 from numpy import expand_dims
 from tensorflow.keras.utils import load_img
@@ -37,9 +39,9 @@ model.add(Dense(10, activation = 'softmax'))
 
 model.compile(loss='sparse_categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
-path_best_model = 'best_model.hdf5'
+path_best_model = 'saved_model.pb'
 
-model.load_weights(path_best_model)
+loaded_model =tf.keras.models.load_model(path_best_model)
 
 image_file = st.file_uploader("Upload images for vegetable classification", type=['png','jpeg'])
 
@@ -59,7 +61,7 @@ def predict(image):
 
     test_img = datagen.flow(img)
 
-    predictions = model.predict(test_img)
+    predictions = loaded_model.predict(test_img)
 
     number_class_pred = np.argmax(predictions)
 
